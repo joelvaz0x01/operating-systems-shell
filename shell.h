@@ -7,14 +7,21 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <ctype.h>
+#define BUFFSIZE 128
 
-void parse(char *buf, char **args);
+int parse(char *buf, char **args);
 
-void execute(char **args);
+void execute(int numargs, char **args);
 
-int builtin (char **args);
+int ultimo(int *numargs, char **args);
 
-/* constantes que podem tornar uteis*/
+int builtin(int numargs, char **args);
+
+void socp(char *fonte, char *destino);
+
+void ioCopy(int IN, int OUT);
+
+/* constantes que podem tornar uteis */
 
 #define BG 0
 #define FG 1
