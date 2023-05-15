@@ -35,13 +35,12 @@ void calc(char *value1, char *op, char *value2)
 
 void bits(char *op1, char *op, char *op2)
 {
-    int v1, v2, result, opexist = strcmp(op, "");
+    int v1, v2, result, error = 0;
     v1 = op1[0] == '~' ? ~atoi(&op1[1]) : atoi(op1);
     v2 = op2[0] == '~' ? ~atoi(&op2[1]) : atoi(op2);
-    if (0 == opexist)
+    if (0 == strcmp(op, ""))
         result = v1;
-
-    if (opexist)
+    else
     {
         switch (op[0])
         {
@@ -57,10 +56,14 @@ void bits(char *op1, char *op, char *op2)
         case '<':
             if (op[1] == '<')
                 result = v1 << v2;
+            else
+                error = 1;
             break;
         case '>':
             if (op[1] == '>')
                 result = v1 >> v2;
+            else
+                error = 1;
             break;
 
         default:
@@ -68,5 +71,8 @@ void bits(char *op1, char *op, char *op2)
             break;
         }
     }
-    printf("Resultado bits %d\n", result);
+    if (!error)
+        printf("Resultado bits %d\n", result);
+    else
+        printf("Operador inválido.\n");
 }
