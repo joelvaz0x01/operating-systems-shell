@@ -42,10 +42,6 @@ int builtin(int numargs, char **args)
     printf("42 is the answer to life the universe and everything\n");
     return 1; /* funcionalidade embutida */
   }
-  /* IMPORTANTE :
-   Devolver 0 para indicar que não existe comando embutido e que
-   será executado usando exec() na função execute.c
-  */
 
   if (0 == strcmp(args[0], "obterinfo"))
   {
@@ -83,5 +79,40 @@ int builtin(int numargs, char **args)
     return 1; // comando embutido
   }
 
+  if (0 == strcmp(args[0], "calc") && numargs == 4)
+  {
+    calc(args[1], args[2], args[3]);
+    return 1; // comando embutido
+  }
+
+  if (0 == strcmp(args[0], "bits") && numargs == 4)
+  {
+    bits(args[1], args[2], args[3]);
+    return 1; // commando embutido
+  }
+  else if (0 == strcmp(args[0], "bits") && (args[1][0] == '~') && numargs == 2)
+  {
+    // executa no caso de só haver uma negação (ex: bits ~5)
+    bits(args[1], "", "");
+    return 1; // commando embutido
+  }
+
+  if (0 == strcmp(args[0], "isjpg") && numargs == 2)
+  {
+    int fd = open(args[1], O_RDONLY);
+    if (fd < 0)
+      printf("Erro ao abrir o ficheiro %s.\n", args[1]);
+    else
+    {
+      isjpg(fd) ? printf("%s é um JPEG.\n", args[1]) : printf("%s não é um JPEG.\n", args[1]);
+      close(fd);
+    }
+    return 1; // commando embutido
+  }
+
+  /* IMPORTANTE :
+   Devolver 0 para indicar que não existe comando embutido e que
+   será executado usando exec() na função execute.c
+  */
   return 0;
 }

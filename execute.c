@@ -1,5 +1,5 @@
 /*
-   execute . cria um processo prog�nito e executa um programa
+   execute . cria um processo progénito e executa um programa
 */
 #include "shell.h"
 #include <sys/wait.h>
@@ -19,14 +19,17 @@ void execute(int numargs, char **args)
 
   if (pid == 0)
   {
-    execvp(*args, args); /* NOTE: as versoes execv() e
-                          * execvp() de execl() sao uteis quando */
-    perror(*args);       /* o numero de argumentos nao e. conhecido.
-                          * Os argumentos de  */
-    exit(1);             /* execv() e execvp() sao o nome do ficheiro
-                          * a ser executado e um */
-  }                      /* vector de strings que contem os
-                          * argumentos. O ultimo argument */
+    if (NULL == strstr(*args, "/"))
+      execvp(*args, args);
+    else
+      execv(*args, args); /* NOTE: as versoes execv() e
+                           * execvp() de execl() sao uteis quando */
+    perror(*args);        /* o numero de argumentos nao e. conhecido.
+                           * Os argumentos de  */
+    exit(1);              /* execv() e execvp() sao o nome do ficheiro
+                           * a ser executado e um */
+  }                       /* vector de strings que contem os
+                           * argumentos. O ultimo argument */
 
   if (FG == code)
     while (wait(&status) != pid)
