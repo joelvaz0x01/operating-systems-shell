@@ -22,14 +22,14 @@ void execute(int numargs, char **args)
     if (NULL == strstr(*args, "/"))
       execvp(*args, args);
     else
-      execv(*args, args); /* NOTE: as versoes execv() e
-                           * execvp() de execl() sao uteis quando */
-    perror(*args);        /* o numero de argumentos nao e. conhecido.
-                           * Os argumentos de  */
-    exit(1);              /* execv() e execvp() sao o nome do ficheiro
-                           * a ser executado e um */
-  }                       /* vector de strings que contem os
-                           * argumentos. O ultimo argument */
+      execl(*args, *args, (char *)NULL); /* NOTE: as versoes execv() e
+                                          * execvp() de execl() sao uteis quando */
+    perror(*args);                       /* o numero de argumentos nao e. conhecido.
+                                          * Os argumentos de  */
+    exit(1);                             /* execv() e execvp() sao o nome do ficheiro
+                                          * a ser executado e um */
+  }                                      /* vector de strings que contem os
+                                          * argumentos. O ultimo argument */
 
   if (FG == code)
     while (wait(&status) != pid)
