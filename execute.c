@@ -31,7 +31,6 @@ void execute(int numargs, char **args)
       { // write
         numargs = indice;
         // fprintf(stderr, "cmd write to pipe: %s numArgs=%d\n", args[0], numargs);
-        redirects(numargs, args);
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
@@ -41,7 +40,6 @@ void execute(int numargs, char **args)
         args = args + indice + 1;
         numargs = numargs - indice - 1;
         // fprintf(stderr, "cmd read from pipe: %s numArgs=%d\n", args[0], numargs);
-        redirects(numargs, args);
         dup2(fd[0], STDIN_FILENO); // duplicar o descritor de ficheiro de leitura do PIPE para a posição na tabele de FD do STDIN
         close(fd[1]);
         close(fd[0]); // fechar o descritor do ficheiro do pipe que este processo não necessita.
