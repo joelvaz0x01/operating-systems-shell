@@ -110,9 +110,29 @@ int builtin(int numargs, char **args)
     return 1; // commando embutido
   }
 
+  if (strcmp(args[0], "aviso") == 0)
+  {
+    pthread_t th;
+    aviso_t *ptr = (aviso_t *)malloc(sizeof(aviso_t));
+    strcpy(ptr->msg, args[1]);
+    ptr->tempo = atoi(args[2]);
+    pthread_create(&th, NULL, avisowrapper, (void *)ptr);
+    return 1; // commando embutido
+  }
+
+  if (strcmp(args[0], "socpth") == 0)
+  {
+    pthread_t th;
+    copiar_t *ptr = (copiar_t *)malloc(sizeof(copiar_t));
+    strcpy(ptr->fonte, args[1]);
+    strcpy(ptr->destino, args[2]);
+    pthread_create(&th, NULL, socpwrapper, (void *)ptr);
+    return 1; // commando embutido
+  }
+
   /* IMPORTANTE :
-   Devolver 0 para indicar que não existe comando embutido e que
-   será executado usando exec() na função execute.c
-  */
+   * Devolver 0 para indicar que não existe comando embutido e que
+   * será executado usando exec() na função execute.c
+   */
   return 0;
 }

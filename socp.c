@@ -27,8 +27,18 @@ void ioCopy(int IN, int OUT)
     while ((n = read(IN, buf, BUFFSIZE)) > 0)
     {
         if (write(OUT, buf, n) != n)
-            perror("Erro de escrita!\n");
+            perror("Erro de escrita!");
     }
     if (n < 0)
-        perror("Erro de leitura!\n");
+        perror("Erro de leitura!");
+    else
+        printf("Copia efectuada com sucesso.\n");
+}
+
+void *socpwrapper(void *args)
+{
+    copiar_t *ptr = (copiar_t *)args;
+    socp(ptr->fonte, ptr->destino);
+    free(ptr);
+    return NULL;
 }

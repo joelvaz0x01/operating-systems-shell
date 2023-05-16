@@ -13,6 +13,18 @@
 #define BUFFSIZE 128
 #define FILE_MODE (S_IRUSR | S_IWUSR)
 
+typedef struct
+{
+    char msg[100];
+    int tempo;
+} aviso_t;
+
+typedef struct
+{
+    char fonte[100];
+    char destino[100];
+} copiar_t;
+
 int parse(char *buf, char **args);
 
 void execute(int numargs, char **args);
@@ -36,6 +48,12 @@ int redirects(int numargs, char *args[]);
 void execommand(int *numargs, char **args);
 
 int containsPipe(int numArgs, char **args);
+
+void aviso(char *mesg, int tempo);
+
+void *avisowrapper(void *args);
+
+void *socpwrapper(void *args);
 
 /* constantes que podem tornar uteis */
 
