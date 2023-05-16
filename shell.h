@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
@@ -10,6 +11,7 @@
 #include <math.h>
 
 #define BUFFSIZE 128
+#define FILE_MODE (S_IRUSR | S_IWUSR)
 
 int parse(char *buf, char **args);
 
@@ -28,6 +30,12 @@ void calc(char *value1, char *op, char *value2);
 void bits(char *op1, char *op, char *op2);
 
 int isjpg(int fileDescriptor);
+
+int redirects(int numargs, char *args[]);
+
+void execommand(int *numargs, char **args);
+
+int containsPipe(int numArgs, char **args);
 
 /* constantes que podem tornar uteis */
 
