@@ -73,7 +73,7 @@ int builtin(int numargs, char **args)
     return 1; // comando embutido
   }
 
-  if (0 == strcmp(args[0], "socp"))
+  if (0 == strcmp(args[0], "socp") && numargs == 3)
   {
     socp(args[1], args[2]);
     return 1; // comando embutido
@@ -110,7 +110,7 @@ int builtin(int numargs, char **args)
     return 1; // commando embutido
   }
 
-  if (strcmp(args[0], "aviso") == 0)
+  if (0 == strcmp(args[0], "aviso") && numargs == 3)
   {
     pthread_t th;
     aviso_t *ptr = (aviso_t *)malloc(sizeof(aviso_t));
@@ -120,7 +120,7 @@ int builtin(int numargs, char **args)
     return 1; // commando embutido
   }
 
-  if (strcmp(args[0], "socpth") == 0)
+  if (0 == strcmp(args[0], "socpth") && numargs == 3)
   {
     pthread_t th;
     copiar_t *ptr = (copiar_t *)malloc(sizeof(copiar_t));
