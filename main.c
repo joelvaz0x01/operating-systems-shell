@@ -84,16 +84,10 @@ int builtin(int numargs, char **args)
     calc(args[1], args[2], args[3]);
     return 1; // comando embutido
   }
-
-  if (0 == strcmp(args[0], "bits") && numargs == 4)
+  
+  if (0 == strcmp(args[0], "bits") && (numargs == 4 || numargs == 2))
   {
     bits(args[1], args[2], args[3]);
-    return 1; // commando embutido
-  }
-  else if (0 == strcmp(args[0], "bits") && (args[1][0] == '~') && numargs == 2)
-  {
-    // executa no caso de só haver uma negação (ex: bits ~5)
-    bits(args[1], "", "");
     return 1; // commando embutido
   }
 
@@ -127,6 +121,37 @@ int builtin(int numargs, char **args)
     strcpy(ptr->fonte, args[1]);
     strcpy(ptr->destino, args[2]);
     pthread_create(&th, NULL, socpwrapper, (void *)ptr);
+    return 1; // commando embutido
+  }
+
+  if (0 == strcmp(args[0], "maior") && numargs == 3)
+  {
+    off_t fileOne = getFileSize(args[1]);
+    off_t fileTwo = getFileSize(args[2]);
+    if (fileOne != -1 && fileTwo != -1)
+      fileOne == fileTwo
+          ? printf("Ambos os ficheiros tem o mesmo tamanho: %Lf KB.\n", (long double)fileOne * 0.001)
+      : fileOne > fileTwo
+          ? printf("Tamanho do ficheiro %s: %Lf KB.\n", args[1], (long double)fileOne * 0.001)
+          : printf("Tamanho do ficheiro %s: %Lf KB.\n", args[2], (long double)fileTwo * 0.001);
+    return 1; // commando embutido
+  }
+
+  if (0 == strcmp(args[0], "setx") && numargs == 2)
+  {
+    changePermitions(args[1], 1, S_IXUSR);
+    return 1; // commando embutido
+  }
+
+  if (0 == strcmp(args[0], "removerl") && numargs == 2)
+  {
+    changePermitions(args[1], 0, ~(S_IRGRP | S_IROTH));
+    return 1; // commando embutido
+  }
+
+  if (0 == strcmp(args[0], "sols"))
+  {
+    listar(args[1]);
     return 1; // commando embutido
   }
 

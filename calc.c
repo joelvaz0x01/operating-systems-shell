@@ -2,7 +2,7 @@
 
 void calc(char *value1, char *op, char *value2)
 {
-    float v1 = atof(value1), v2 = atof(value2), result;
+    float v1 = atof(value1), v2 = atof(value2), result = 0;
     switch (op[0])
     {
     case '+': // Somar
@@ -35,13 +35,13 @@ void calc(char *value1, char *op, char *value2)
 
 void bits(char *op1, char *op, char *op2)
 {
-    int v1, v2, result, error = 0;
-    v1 = op1[0] == '~' ? ~atoi(&op1[1]) : atoi(op1);
-    v2 = op2[0] == '~' ? ~atoi(&op2[1]) : atoi(op2);
-    if (0 == strcmp(op, ""))
+    int result = 0, error = 0;
+    int v1 = op1[0] == '~' ? ~atoi(&op1[1]) : atoi(op1);
+    if (NULL == op)
         result = v1;
     else
     {
+        int v2 = op2[0] == '~' ? ~atoi(&op2[1]) : atoi(op2);
         switch (op[0])
         {
         case '&':
@@ -71,8 +71,5 @@ void bits(char *op1, char *op, char *op2)
             break;
         }
     }
-    if (!error)
-        printf("Resultado bits %d\n", result);
-    else
-        printf("Operador inválido.\n");
+    !error ? printf("Resultado bits %d\n", result) : printf("Operador inválido.\n");
 }

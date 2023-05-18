@@ -9,6 +9,8 @@
 #include <pthread.h>
 #include <ctype.h>
 #include <math.h>
+#include <dirent.h>
+#include <time.h>
 
 #define BUFFSIZE 128
 #define FILE_MODE (S_IRUSR | S_IWUSR)
@@ -54,6 +56,14 @@ void aviso(char *mesg, int tempo);
 void *avisowrapper(void *args);
 
 void *socpwrapper(void *args);
+
+off_t getFileSize(char *filename);
+
+void changePermitions(char *filename, int incr_permissions, int permissions);
+
+char *getLastModified(char *path, char *filename);
+
+void listar(char *pasta);
 
 /* constantes que podem tornar uteis */
 
