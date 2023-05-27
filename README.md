@@ -38,4 +38,7 @@ Para usar o soshell, basta digitar os comandos desejados e pressionar a tecla `E
 - [x] `removerl` - **Remove permissões de leitura** a um ficheiro (*group* e *others*).
 - [x] `sols` - Lista os ficheiros de um diretório.
 
-**Nota importante**: o soshell também suporta comandos que estão presentes no PATH do sistema.
+**Nota importante:** O soshell também suporta comandos que estão presentes no `PATH` do sistema.
+
+## TODO:
+- [ ] Revisão de todos os comentários.

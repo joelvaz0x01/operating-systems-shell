@@ -2,9 +2,9 @@
 
 /**
  * Calculadora simples
- * @param value1 - Valor 1
- * @param op - Operador
- * @param value2 - Valor 2
+ * @param value1 Valor 1
+ * @param op Operador
+ * @param value2 Valor 2
  */
 void calc(char *value1, char *op, char *value2)
 {
@@ -41,9 +41,9 @@ void calc(char *value1, char *op, char *value2)
 
 /**
  * Calculadora de bits
- * @param op1 - Valor 1
- * @param op - Operador
- * @param op2 - Valor 2
+ * @param op1 Valor 1
+ * @param op Operador
+ * @param op2 Valor 2
  */
 void bits(char *op1, char *op, char *op2)
 {

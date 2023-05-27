@@ -1,12 +1,9 @@
-/*
-   execute . cria um processo progénito e executa um programa
-*/
 #include "shell.h"
 
 /**
- * Executa um comando
- * @param numargs - Número de argumentos
- * @param args - Array de argumentos
+ * Cria um processo progénito e executa um programa
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
  */
 void execute(int numargs, char **args)
 {
@@ -65,8 +62,8 @@ void execute(int numargs, char **args)
 
 /**
  * Verifica se existem redirecionamentos
- * @param numargs - Número de argumentos
- * @param args - Array de argumentos
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
  * @return FG (-1) se não existirem redirecionamentos, BG (0) se existirem
  */
 int ultimo(int *numargs, char **args)
@@ -82,8 +79,8 @@ int ultimo(int *numargs, char **args)
 
 /**
  * Executa um comando com redirecionamentos
- * @param numargs - Número de argumentos
- * @param args - Array de argumentos
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
  */
 void execommand(int *numargs, char **args)
 {
@@ -100,9 +97,9 @@ void execommand(int *numargs, char **args)
 
 /**
  * Verifica se existe um pipe no array de strings
- * @param numargs - Número de argumentos
- * @param args - Array de argumentos
- * @return - Índice do pipe ou -1 se não existir
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ * @return Índice do pipe ou -1 se não existir
  */
 int containsPipe(int numargs, char **args)
 {

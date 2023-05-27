@@ -2,8 +2,8 @@
 
 /**
  * Mosta um aviso durante um determinado tempo
- * @param mesg - Mensagem a mostrar
- * @param tempo - Tempo em segundos
+ * @param mesg Mensagem a mostrar
+ * @param tempo Tempo em segundos
  */
 void aviso(char *mesg, int tempo)
 {
@@ -17,7 +17,7 @@ void aviso(char *mesg, int tempo)
 
 /**
  * Mosta um aviso durante um determinado tempo (wrapper)
- * @param args - Argumentos
+ * @param args Argumentos
  */
 void *avisowrapper(void *args)
 {

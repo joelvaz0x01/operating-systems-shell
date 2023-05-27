@@ -2,8 +2,8 @@
 
 /**
  * Retorna o tamanho do ficheiro
- * @param filename - Nome do ficheiro
- * @return - Tamanho do ficheiro
+ * @param filename Nome do ficheiro
+ * @return Tamanho do ficheiro
  */
 off_t getFileSize(char *filename)
 {
@@ -27,10 +27,10 @@ off_t getFileSize(char *filename)
 }
 
 /**
- * Retorna o número de linhas do ficheiro
- * @param filename - Nome do ficheiro
- * @param incr_permissions - 1 para adicionar permissões, 0 para remover
- * @param permissions - Permissões a adicionar/remover
+ * Altera as permissões de um ficheiro
+ * @param filename Nome do ficheiro
+ * @param incr_permissions 1 para adicionar permissões, 0 para remover permissões
+ * @param permissions Permissões a adicionar/remover
  */
 void changePermitions(char *filename, int incr_permissions, int permissions)
 {
@@ -59,9 +59,9 @@ void changePermitions(char *filename, int incr_permissions, int permissions)
 
 /**
  * Retorna a data de última modificação do ficheiro
- * @param path - Caminho para o ficheiro
- * @param filename - Nome do ficheiro
- * @return - Data de última modificação do ficheiro
+ * @param path Caminho para o ficheiro
+ * @param filename Nome do ficheiro
+ * @return Data de última modificação do ficheiro
  */
 char *getLastModified(char *path, char *filename)
 {
@@ -79,8 +79,8 @@ char *getLastModified(char *path, char *filename)
 }
 
 /**
- * Retorna o número de linhas do ficheiro
- * @param pasta - Caminho para a pasta
+ * Semelhante ao comando ls
+ * @param pasta Caminho para o diretório
  */
 void listar(char *pasta)
 {

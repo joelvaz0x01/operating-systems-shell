@@ -2,9 +2,9 @@
 
 /**
  * Particiona o comando Unix (armazenado em ptrLinha) em argumentos
- * @param ptrLinha - Comando Unix
- * @param args - Array de argumentos
- * @return - Número de argumentos
+ * @param ptrLinha Comando Unix
+ * @param args Array de argumentos
+ * @return Número de argumentos
  */
 int parse(char *ptrLinha, char **args)
 {

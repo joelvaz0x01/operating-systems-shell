@@ -17,9 +17,9 @@
 
 /**
  * Estrutura para o comando aviso
- * @param msg - Mensagem a mostrar
- * @param tempo - Tempo em segundos
-*/
+ * @param msg Mensagem a mostrar
+ * @param tempo Tempo em segundos
+ */
 typedef struct
 {
     char msg[100];
@@ -28,9 +28,9 @@ typedef struct
 
 /**
  * Estrutura para o comando copiar
- * @param fonte - Ficheiro de origem
- * @param destino - Ficheiro de destino
-*/
+ * @param fonte Ficheiro de origem
+ * @param destino Ficheiro de destino
+ */
 typedef struct
 {
     char fonte[100];

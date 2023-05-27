@@ -32,9 +32,9 @@ int main()
 
 /**
  * Verifica se o comando é embutido
- * @param numargs - Número de argumentos
- * @param args - Array de argumentos
- * @return - 1 se for embutido, 0 se não for
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ * @return 1 se for embutido, 0 se não for embutido
  */
 int builtin(int numargs, char **args)
 {
