@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * Calculadora
+ * Calculadora simples
  * @param value1 - Valor 1
  * @param op - Operador
  * @param value2 - Valor 2
