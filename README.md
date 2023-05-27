@@ -14,21 +14,21 @@ Para limpar os arquivos gerados pela compilação, basta executar o comando `mak
 Para usar o interpretador de comandos, basta digitar os comandos desejados e pressionar a tecla `Enter`.
 
 ## Comandos implementados
-- [x] `sair`
-- [x] `42`
-- [x] `obterinfo`
-- [x] `quemsoueu`
-- [x] `cd`
-- [x] `socp`
-- [x] `calc`
-- [x] `bits`
-- [x] `isjpg`
-- [x] `aviso`
-- [x] `socpth`
-- [x] `maior`
-- [x] `setx`
-- [x] `removerl`
-- [x] `sols`
+- [x] `sair` - Termina o interpretador de comandos.
+- [x] `42` - Mostra a resposta para a vida, o universo e tudo mais.
+- [x] `obterinfo` - Obtém informações sobre a versão do SoShell.
+- [x] `quemsoueu` - Obtém informações sobre o utilizador.
+- [x] `cd` - Muda o diretório atual.
+- [x] `socp` - Copia um ficheiro para outro local.
+- [x] `calc` - Calculadora.
+- [x] `bits` - Calculadora de bits.
+- [x] `isjpg` - Verifica se um ficheiro é uma imagem JPG.
+- [x] `aviso` - Mostra um aviso.
+- [x] `socpth` - Copia um ficheiro usando threads.
+- [x] `maior` - Mostra o fichero com maior tamanho.
+- [x] `setx` - Muda as permissões de um ficheiro para executável para o utilizador atual.
+- [x] `removerl` - Remove as permissões de leitura de um ficheiro para o grupo e outros.
+- [x] `sols` - Lista os ficheiros de um diretório.
 
 ## TODO
 - [x] Ficha P4-shell
