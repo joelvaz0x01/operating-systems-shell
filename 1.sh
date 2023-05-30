@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 # 
 # This file can be used to test if your shell implements the execution in background (&) funcionality
 # You should make the file executable : chmod 755 1.sh
