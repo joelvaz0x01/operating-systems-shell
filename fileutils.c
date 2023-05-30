@@ -109,6 +109,10 @@ void listar(char *pasta)
     closedir(dp);
 }
 
+/**
+ * Retorna o tipo de ficheiro
+ * @param filename Nome do ficheiro
+ */
 void showType(char *filename)
 {
     /* View more about `struct stat` on section `The stat structure` or `man 2 stat`:
