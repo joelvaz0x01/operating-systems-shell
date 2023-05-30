@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * Mosta um aviso durante um determinado tempo
+ * Mosta um aviso após um determinado tempo
  * @param mesg Mensagem a mostrar
  * @param tempo Tempo em segundos
  */
@@ -16,7 +16,7 @@ void aviso(char *mesg, int tempo)
 }
 
 /**
- * Mosta um aviso durante um determinado tempo (wrapper)
+ * Mosta um aviso após um determinado tempo (wrapper)
  * @param args Argumentos
  */
 void *avisowrapper(void *args)

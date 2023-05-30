@@ -26,15 +26,15 @@ void execute(int numargs, char **args)
       args[indice] = NULL;
       pipe(fd);
       pidFilho = fork();
-      if (0 == pidFilho) // write
-      {
+      if (0 == pidFilho)
+      { // write
         numargs = indice;
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
       }
-      else // read
-      {
+      else
+      { // read
         args = args + indice + 1;
         numargs = numargs - indice - 1;
         dup2(fd[0], STDIN_FILENO); // duplicar o descritor de ficheiro de leitura do PIPE para a posição na tabele de FD do STDIN
@@ -61,10 +61,10 @@ void execute(int numargs, char **args)
 }
 
 /**
- * Verifica se existem redirecionamentos
+ * Verifica se o processo deve ser executado em background ou em foreground
  * @param numargs Número de argumentos
  * @param args Array de argumentos
- * @return FG (-1) se não existirem redirecionamentos, BG (0) se existirem
+ * @return FG (1) se for foreground, BG (0) se for background
  */
 int ultimo(int *numargs, char **args)
 {

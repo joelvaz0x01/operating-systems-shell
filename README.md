@@ -41,4 +41,4 @@ Para usar o soshell, basta digitar os comandos desejados e pressionar a tecla `E
 **Nota importante:** O soshell também suporta comandos que estão presentes no `PATH` do sistema.
 
 ## TODO:
-- [ ] Revisão de todos os comentários.
+- [x] Revisão de todos os comentários.

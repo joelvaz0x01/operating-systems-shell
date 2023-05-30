@@ -20,7 +20,7 @@ void calc(char *value1, char *op, char *value2)
     case '*': // Multiplicar
         result = v1 * v2;
         break;
-    case '/':                           // Dividir
+    case '/': // Dividir
         if (fabs(v2) < __FLT_EPSILON__) // Por ser float v2 == 0 não é 0, mas sim uma aproximação de 0 (ex: 1.0e-7)
         {
             printf("Impossivel dividir por 0\n");
