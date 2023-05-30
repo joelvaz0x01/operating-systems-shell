@@ -11,7 +11,8 @@ int main()
   strcpy(prompt, "SOSHELL: Introduza um comando : prompt> ");
   while (1)
   {
-    printf("%s", prompt);
+    printf(B_GRN "%s", prompt);
+    printf(MR_WHITE);
     if (fgets(linha, 1023, stdin) == NULL)
     {
       printf("\n");
@@ -152,6 +153,12 @@ int builtin(int numargs, char **args)
   if (0 == strcmp(args[0], "sols"))
   {
     listar(args[1]);
+    return 1; // commando embutido
+  }
+
+  if (0 == strcmp(args[0], "tipo"))
+  {
+    showType(args[1]);
     return 1; // commando embutido
   }
 
