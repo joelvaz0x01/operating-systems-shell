@@ -1,12 +1,13 @@
-/*
-   execute . cria um processo progénito e executa um programa
-*/
 #include "shell.h"
 
+/**
+ * Cria um processo progénito e executa um programa
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ */
 void execute(int numargs, char **args)
 {
   int pid, pidFilho, status, fd[2];
-
   int code = ultimo(&numargs, args);
 
   if ((pid = fork()) < 0)
@@ -22,24 +23,20 @@ void execute(int numargs, char **args)
       execommand(&numargs, args);
     if (indice > 0)
     {
-      // printf("pipe detected at index %d\n", indice);
-      // printf("Remove PIPE symbol. Create Pipe. Fork(). Exec in 2 Processes\n");
       args[indice] = NULL;
       pipe(fd);
       pidFilho = fork();
-      if (0 == pidFilho)
-      { // write
+      if (0 == pidFilho) // write
+      {
         numargs = indice;
-        // fprintf(stderr, "cmd write to pipe: %s numArgs=%d\n", args[0], numargs);
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
       }
-      else
-      { // read
+      else // read
+      {
         args = args + indice + 1;
         numargs = numargs - indice - 1;
-        // fprintf(stderr, "cmd read from pipe: %s numArgs=%d\n", args[0], numargs);
         dup2(fd[0], STDIN_FILENO); // duplicar o descritor de ficheiro de leitura do PIPE para a posição na tabele de FD do STDIN
         close(fd[1]);
         close(fd[0]); // fechar o descritor do ficheiro do pipe que este processo não necessita.
@@ -56,13 +53,19 @@ void execute(int numargs, char **args)
     exit(1);
   }
 
-  if (FG == code)
+  if (FG == code) // Se for FG, esperar pelo filho
     while (wait(&status) != pid)
-      /*spin fazer nada */;
+      /* spin fazer nada */;
 
   return;
 }
 
+/**
+ * Verifica se existem redirecionamentos
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ * @return FG (-1) se não existirem redirecionamentos, BG (0) se existirem
+ */
 int ultimo(int *numargs, char **args)
 {
   if (args[*numargs - 1][0] == '&')
@@ -71,10 +74,14 @@ int ultimo(int *numargs, char **args)
     args[*numargs] = NULL;
     return BG;
   }
-  return FG; /*return FG ou BG definidos no shell.h */
+  return FG; /* return FG ou BG definidos no shell.h */
 }
 
-/* Otimização - uso de execvp() ou execl() */
+/**
+ * Executa um comando com redirecionamentos
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ */
 void execommand(int *numargs, char **args)
 {
   if (-1 != redirects(*numargs, args))
@@ -88,7 +95,12 @@ void execommand(int *numargs, char **args)
     exit(1);
 }
 
-/* Detect PIPE SYMBOL in array of Strings return its index or -1 if it does not exist */
+/**
+ * Verifica se existe um pipe no array de strings
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ * @return Índice do pipe ou -1 se não existir
+ */
 int containsPipe(int numargs, char **args)
 {
   int index;

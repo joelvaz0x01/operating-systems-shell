@@ -31,6 +31,12 @@ int main()
   return 0;
 }
 
+/**
+ * Verifica se o comando é embutido
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ * @return 1 se for embutido, 0 se não for embutido
+ */
 int builtin(int numargs, char **args)
 {
   if (strcmp(args[0], "sair") == 0)
@@ -85,7 +91,7 @@ int builtin(int numargs, char **args)
     calc(args[1], args[2], args[3]);
     return 1; // comando embutido
   }
-  
+
   if (0 == strcmp(args[0], "bits") && (numargs == 4 || numargs == 2))
   {
     bits(args[1], args[2], args[3]);
@@ -155,14 +161,14 @@ int builtin(int numargs, char **args)
     listar(args[1]);
     return 1; // commando embutido
   }
-
+  
   if (0 == strcmp(args[0], "tipo"))
   {
     showType(args[1]);
     return 1; // commando embutido
   }
-
-  /* IMPORTANTE :
+  
+  /* IMPORTANTE:
    * Devolver 0 para indicar que não existe comando embutido e que
    * será executado usando exec() na função execute.c
    */

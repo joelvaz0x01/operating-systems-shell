@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * Retorna o tamanho do ficheiro
+ * @param filename Nome do ficheiro
+ * @return Tamanho do ficheiro
+ */
 off_t getFileSize(char *filename)
 {
     int fd = open(filename, O_RDONLY);
@@ -21,6 +26,12 @@ off_t getFileSize(char *filename)
     return fileSize;
 }
 
+/**
+ * Altera as permissões de um ficheiro
+ * @param filename Nome do ficheiro
+ * @param incr_permissions 1 para adicionar permissões, 0 para remover permissões
+ * @param permissions Permissões a adicionar/remover
+ */
 void changePermitions(char *filename, int incr_permissions, int permissions)
 {
     /* View more about `struct stat` on section `The stat structure` or `man 2 stat`:
@@ -46,6 +57,12 @@ void changePermitions(char *filename, int incr_permissions, int permissions)
     return;
 }
 
+/**
+ * Retorna a data de última modificação do ficheiro
+ * @param path Caminho para o ficheiro
+ * @param filename Nome do ficheiro
+ * @return Data de última modificação do ficheiro
+ */
 char *getLastModified(char *path, char *filename)
 {
     struct stat st;
@@ -61,6 +78,10 @@ char *getLastModified(char *path, char *filename)
     return ctime(&st.st_ctime);
 }
 
+/**
+ * Semelhante ao comando ls
+ * @param pasta Caminho para o diretório
+ */
 void listar(char *pasta)
 {
     /* View more about `struct dirent` or `man 3 readdir`:

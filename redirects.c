@@ -1,8 +1,11 @@
 #include "shell.h"
 
-//  redirects.c
-//  redirects tratamento dos simbolos por ordem inversa:  i) 2>  ii) > OU  >  iii) <
-
+/**
+ * Trata dos redirecionamentos
+ * @param numargs Número de argumentos
+ * @param args Array de argumentos
+ * @return Número de argumentos
+ */
 int redirects(int numargs, char *args[])
 {
     if (numargs < 3)
@@ -15,7 +18,7 @@ int redirects(int numargs, char *args[])
         if (fd < 0)
         {
             perror(NULL);
-            exit(1); /*indicar um erro*/
+            exit(1); /* indicar um erro */
         }
         dup2(fd, STDERR_FILENO);
         close(fd);
@@ -32,7 +35,7 @@ int redirects(int numargs, char *args[])
         if (fd < 0)
         {
             perror(NULL);
-            exit(1); /*indicar um erro*/
+            exit(1); /* indicar um erro */
         }
         dup2(fd, STDOUT_FILENO);
         close(fd);
@@ -48,7 +51,7 @@ int redirects(int numargs, char *args[])
             if (fd < 0)
             {
                 perror(NULL);
-                exit(1); /*indicar um erro*/
+                exit(1); /* indicar um erro */
             }
             dup2(fd, STDOUT_FILENO);
             close(fd);
@@ -67,7 +70,7 @@ int redirects(int numargs, char *args[])
         if (fd < 0)
         {
             perror(NULL);
-            exit(1); /*indicar um erro*/
+            exit(1); /* indicar um erro */
         }
         dup2(fd, STDIN_FILENO);
         close(fd);

@@ -15,12 +15,22 @@
 #define BUFFSIZE 128
 #define FILE_MODE (S_IRUSR | S_IWUSR)
 
+/**
+ * Estrutura para o comando aviso
+ * @param msg Mensagem a mostrar
+ * @param tempo Tempo em segundos
+ */
 typedef struct
 {
     char msg[100];
     int tempo;
 } aviso_t;
 
+/**
+ * Estrutura para o comando copiar
+ * @param fonte Ficheiro de origem
+ * @param destino Ficheiro de destino
+ */
 typedef struct
 {
     char fonte[100];

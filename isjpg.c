@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * Verifica se um ficheiro é jpg
+ * @param filename Nome do ficheiro
+ * @return 1 se for jpg, 0 se não for
+ */
 int isjpg(int fileDescriptor)
 {
     unsigned char b[4];
