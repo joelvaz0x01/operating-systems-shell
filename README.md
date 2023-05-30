@@ -33,7 +33,7 @@ Para usar o soshell, basta digitar os comandos desejados e pressionar a tecla `E
 - [x] `isjpg` - Verifica se um ficheiro é uma imagem do tipo JPG.
 - [x] `aviso` - Mostra um aviso utilizando *threads*.
 - [x] `socpth` - Copia um ficheiro utilizando *threads*.
-- [x] `maior` - Mostra o fichero com o tamanho maior.
+- [x] `maior` - Devolve qual o ficheiro com maior tamanho.
 - [x] `setx` - **Adiciona permissões de execução** a um ficheiro (*user*).
 - [x] `removerl` - **Remove permissões de leitura** a um ficheiro (*group* e *others*).
 - [x] `sols` - Lista os ficheiros de um diretório.
