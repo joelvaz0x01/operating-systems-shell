@@ -11,7 +11,8 @@ int main()
   strcpy(prompt, "SOSHELL: Introduza um comando : prompt> ");
   while (1)
   {
-    printf("%s", prompt);
+    printf(B_GRN "%s", prompt);
+    printf(MR_WHITE);
     if (fgets(linha, 1023, stdin) == NULL)
     {
       printf("\n");
@@ -160,7 +161,13 @@ int builtin(int numargs, char **args)
     listar(args[1]);
     return 1; // commando embutido
   }
-
+  
+  if (0 == strcmp(args[0], "tipo"))
+  {
+    showType(args[1]);
+    return 1; // commando embutido
+  }
+  
   /* IMPORTANTE:
    * Devolver 0 para indicar que não existe comando embutido e que
    * será executado usando exec() na função execute.c

@@ -75,7 +75,41 @@ char *getLastModified(char *path, char *filename);
 
 void listar(char *pasta);
 
+void showType(char *filename);
+
 /* constantes que podem tornar uteis */
 
 #define BG 0
 #define FG 1
+
+// Red
+#define RED "\x1B[0;31m"
+// Green
+#define GRN "\x1B[0;32m"
+// Yellow
+#define YEL "\x1B[0;33m"
+// Blue
+#define BLU "\x1B[0;34m"
+// Magenta
+#define MAG "\x1B[0;35m"
+// Cyan
+#define CYN "\x1B[0;36m"
+// White
+#define MR_WHITE "\x1B[0;37m"
+// Reset
+#define RST "\x1B[0m"
+// Bold
+// Bold Red
+#define B_RED "\x1B[1;31m"
+// Bold Green
+#define B_GRN "\x1B[1;32m"
+// Bold Yellow
+#define B_YEL "\x1B[1;33m"
+// Bold Blue
+#define B_BLU "\x1B[1;34m"
+// Bold Magenta
+#define B_MAG "\x1B[1;35m"
+// Bold Cyan
+#define B_CYN "\x1B[1;36m"
+// Bold White
+#define B_MR_WHITE "\x1B[37m"

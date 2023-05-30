@@ -108,3 +108,34 @@ void listar(char *pasta)
 
     closedir(dp);
 }
+
+void showType(char *filename)
+{
+    /* View more about `struct stat` on section `The stat structure` or `man 2 stat`:
+     * https://www.man7.org/linux/man-pages/man2/stat.2.html
+     */
+    struct stat st;
+    if (stat(filename, &st) == -1)
+    {
+        perror("Erro ao obter as permissões");
+        return;
+    }
+
+    if (S_ISREG(st.st_mode))
+        printf("%s é um ficheiro regular\n", filename);
+    else if (S_ISDIR(st.st_mode))
+        printf("%s é um diretório\n", filename);
+    else if (S_ISCHR(st.st_mode))
+        printf("%s é um ficheiro de caracteres\n", filename);
+    else if (S_ISBLK(st.st_mode))
+        printf("%s é um ficheiro de blocos\n", filename);
+    else if (S_ISFIFO(st.st_mode))
+        printf("%s é um FIFO\n", filename);
+    else if (S_ISLNK(st.st_mode))
+        printf("%s é um link simbólico\n", filename);
+    else if (S_ISSOCK(st.st_mode))
+        printf("%s é um socket\n", filename);
+    else
+        printf("%s é um tipo de ficheiro desconhecido\n", filename);
+    return;
+}

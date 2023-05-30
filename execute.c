@@ -89,7 +89,7 @@ void execommand(int *numargs, char **args)
     if (NULL == strstr(*args, "/"))
       execvp(*args, args);
     else
-      execl(*args, *args, (char *)NULL);
+      execv(*args, args);
   }
   else
     exit(1);
