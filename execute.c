@@ -19,6 +19,7 @@ void execute(int numargs, char **args)
   {
     int indice = containsPipe(numargs, args);
     if (-1 == indice)
+      // safeexec(args);
       execommand(&numargs, args);
     if (indice > 0)
     {
@@ -44,6 +45,7 @@ void execute(int numargs, char **args)
         close(fd[1]);
         close(fd[0]); // fechar o descritor do ficheiro do pipe que este processo não necessita.
       }
+      // safeexec(args);
       execommand(&numargs, args); // Chamar a função execvp() para executar os comandos agora ligados via um pipe.
     }
     /* NOTE:
@@ -98,4 +100,22 @@ int containsPipe(int numargs, char **args)
       return index;
     }
   return -1;
+}
+
+/**
+ * Permite a execução de comandos que estejam num array de strings
+ */
+void safeexec(char **args)
+{
+  char *safe[] = {"ls", "cat", "date"};
+  int i;
+  for (i = 0; i < 3; i++)
+  {
+    if (0 == strcmp(args[0], safe[i]))
+    {
+      execvp(*args, args);
+      return;
+    }
+  }
+  printf("Comando não permitido\n");
 }

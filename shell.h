@@ -67,6 +67,8 @@ void listar(char *pasta);
 
 void showType(char *filename);
 
+void safeexec(char **args);
+
 /* constantes que podem tornar uteis */
 
 #define BG 0

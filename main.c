@@ -1,6 +1,21 @@
 #include "shell.h"
 
 char prompt[100];
+typedef unsigned short tipo;
+tipo mask = 0x8000;
+
+void printBits(tipo aNumber, tipo mascara)
+{
+  while (mascara > 0)
+  {
+    if ((aNumber & mascara) == 0)
+      putchar('0');
+    else
+      putchar('1');
+    mascara = mascara >> 1;
+  }
+  printf("\n");
+}
 
 int main()
 {
@@ -156,9 +171,10 @@ int builtin(int numargs, char **args)
     return 1; // commando embutido
   }
 
-  if (0 == strcmp(args[0], "tipo"))
+  if (0 == strcmp(args[0], "printbits") && numargs == 2)
   {
-    showType(args[1]);
+    tipo number = atoi(args[1]);
+    printBits(number, mask);
     return 1; // commando embutido
   }
 
